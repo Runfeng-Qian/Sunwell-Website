@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SUNWELL GROUP - Building Materials Supply Platform</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        /* Header Styles */
+        header {
+            background: #fff;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #2c5aa0;
+        }
+
+        .logo img {
+            height: 50px;
+            width: auto;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #2c5aa0;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=1600') center/cover;
+            color: white;
+            padding: 150px 5%;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+        }
+
+        .cta-button {
+            background: #2c5aa0;
+            color: white;
+            padding: 15px 40px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            display: inline-block;
+            transition: background 0.3s;
+        }
+
+        .cta-button:hover {
+            background: #1e4278;
+        }
+
+        /* Vendor Partners Section */
+        .vendors {
+            padding: 60px 0;
+            background: #f8f8f8;
+        }
+
+        .vendors h2 {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: #333;
+        }
+
+        .vendor-scroll {
+            display: flex;
+            overflow-x: auto;
+            gap: 3rem;
+            padding: 20px 5%;
+            scroll-behavior: smooth;
+        }
+
+        .vendor-scroll::-webkit-scrollbar {
+            height: 8px;
+        }
+
+        .vendor-scroll::-webkit-scrollbar-track {
+            background: #ddd;
+        }
+
+        .vendor-scroll::-webkit-scrollbar-thumb {
+            background: #2c5aa0;
+            border-radius: 4px;
+        }
+
+        .vendor-logo {
+            flex: 0 0 200px;
+            height: 120px;
+            background: white;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            font-weight: bold;
+            color: #666;
+            font-size: 1.1rem;
+            text-align: center;
+            padding: 10px;
+        }
+
+        /* About Section */
+        .about {
+            padding: 80px 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .about h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: #2c5aa0;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3rem;
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .about-text h3 {
+            color: #2c5aa0;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .about-text ul {
+            margin-left: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .about-text li {
+            margin-bottom: 0.8rem;
+            line-height: 1.6;
+        }
+
+        .highlight-box {
+            background: #e8f0ff;
+            padding: 2rem;
+            border-radius: 8px;
+            border-left: 4px solid #2c5aa0;
+            margin: 2rem 0;
+        }
+
+        .highlight-box h4 {
+            color: #2c5aa0;
+            margin-bottom: 1rem;
+        }
+
+        /* News Section */
+        .news {
+            padding: 80px 5%;
+            background: #f8f8f8;
+        }
+
+        .news h2 {
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            text-align: center;
+            color: #333;
+        }
+
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .news-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .news-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .news-image {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .news-image.rebuild {
+            background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=800');
+        }
+
+        .news-image.conference {
+            background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800');
+        }
+
+        .news-image.investment {
+            background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800');
+        }
+
+        .news-content {
+            padding: 1.5rem;
+        }
+
+        .news-date {
+            color: #2c5aa0;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .news-content h3 {
+            margin-bottom: 1rem;
+            color: #333;
+            font-size: 1.3rem;
+        }
+
+        .news-content p {
+            color: #666;
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .read-more {
+            color: #2c5aa0;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 80px 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .contact h2 {
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            text-align: center;
+            color: #333;
+        }
+
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+
+        .contact-info {
+            background: #f8f8f8;
+            padding: 2rem;
+            border-radius: 8px;
+        }
+
+        .contact-info h3 {
+            color: #2c5aa0;
+            margin-bottom: 1.5rem;
+        }
+
+        .info-item {
+            margin-bottom: 1.5rem;
+        }
+
+        .info-item strong {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #333;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-family: inherit;
+        }
+
+        .contact-form textarea {
+            height: 150px;
+            resize: vertical;
+        }
+
+        .submit-button {
+            background: #2c5aa0;
+            color: white;
+            padding: 12px 40px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background 0.3s;
+        }
+
+        .submit-button:hover {
+            background: #1e4278;
+        }
+
+        .form-message {
+            margin-top: 1rem;
+            padding: 1rem;
+            border-radius: 5px;
+            display: none;
+        }
+
+        .form-message.success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        .form-message.error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+
+        /* Footer */
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 2rem 5%;
+        }
+
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <!-- Upload your logo to GitHub repo and replace 'logo.png' with your filename -->
+                <img src="logo.jpg" alt="SUNWELL GROUP Logo">
+                <span>SUNWELL GROUP LTD.</span>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#partners">Partners</a></li>
+                    <li><a href="#news">News</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Leading Platform for Ukraine Reconstruction Materials</h1>
+            <p>SUNWELL GROUP is a comprehensive trust sales platform integrating building, decoration, and home furnishing industry chain resources. We are deeply involved in Ukraine's post-war reconstruction, providing quality building materials at competitive prices for reconstruction projects.</p>
+            <a href="#contact" class="cta-button">Partner With Us</a>
+        </div>
+    </section>
+
+    <!-- Vendor Partners Section -->
+    <section class="vendors" id="partners">
+        <h2>Our Trusted Vendor Partners</h2>
+        <div class="vendor-scroll">
+            <div class="vendor-logo">Premium Steel Solutions</div>
+            <div class="vendor-logo">Global Cement Corp</div>
+            <div class="vendor-logo">Elite Glass Industries</div>
+            <div class="vendor-logo">Advanced Insulation Systems</div>
+            <div class="vendor-logo">Quality Drywall Supply</div>
+            <div class="vendor-logo">Modern Building Materials</div>
+            <div class="vendor-logo">ProConstruct Supplies</div>
+            <div class="vendor-logo">European Building Solutions</div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <h2>About SUNWELL GROUP</h2>
+        <div class="about-content">
+            <div class="about-text">
+                <p>SUNWELL GROUP LTD. operates as a trust sales platform, integrating resources across the entire construction, decoration, and home furnishing industry chain. We have established a comprehensive service platform that combines exhibition, transaction, logistics, and settlement services.</p>
+                
+                <p>We are deeply involved in Ukraine's post-war residential and public facility reconstruction plans and special reconstruction projects, actively cooperating with the Ukraine Reconstruction Committee to recommend high-quality and affordable building materials to US-Canada-EU aid projects for Ukraine.</p>
+
+                <h3>Our Organizational Structure</h3>
+                <ul>
+                    <li><strong>Platform Operations:</strong> SUNWELL GROUP is responsible for overall project management, platform operations, and cross-border coordination, directly interfacing with the Ukraine Reconstruction Committee and reconstruction project builders</li>
+                    <li><strong>Storage & Display Centers:</strong> Located in Kyiv, Odessa, Lviv, and Zaporizhzhia regions</li>
+                    <li><strong>Dream Rebuild Volunteers Association (DRVA):</strong> Provides free reconstruction design solutions for our self-built projects</li>
+                    <li><strong>Dreams Realized Charity (DRC):</strong> Fundraises for reconstruction projects</li>
+                </ul>
+
+                <div class="highlight-box">
+                    <h4>Platform Unique Advantages</h4>
+                    <p><strong>Multi-Channel Sales Integration:</strong> We provide complete sales channel solutions including display platform, retail platform, wholesale platform, and special supply platform - a four-in-one approach. Our storage and display centers serve as both product storage bases and customer-facing exhibition and transaction venues.</p>
+                    
+                    <p><strong>Project Procurement Guarantee:</strong> Secured procurement orders from Ukraine reconstruction projects (in close cooperation with Ukraine Post-War Reconstruction Committee, Charity Foundation, and Volunteer Association), our self-built project procurement orders, and special supply orders for Ukraine special reconstruction projects. We ensure every qualified supplier has opportunities to receive procurement orders.</p>
+                    
+                    <p><strong>Cost Optimization:</strong> Suppliers only need to bear reasonable storage and platform operation fees to enjoy exhibition, sales, and delivery services, saving the huge investment of building their own sales networks and exhibition centers.</p>
+                </div>
+
+                <h3>Market Opportunities</h3>
+                <p><strong>Ukraine Reconstruction Market Scale:</strong> The total reconstruction market is estimated at over $524 billion, covering residential, public facilities, and infrastructure needs. The reconstruction period spans 10-15 years, providing long-term revenue opportunities for suppliers.</p>
+
+                <p><strong>Policy Support Advantages:</strong> Our platform has obtained direct approval from the Ukraine Reconstruction Committee, enjoys green procurement channels and tariff reduction policies, and has significant advantages in local price competition.</p>
+
+                <h3>Win-Win Cooperation Model</h3>
+                <p>Through this innovative cooperation model, SUNWELL GROUP not only provides sales channels for suppliers but also offers a complete overseas market expansion solution, enabling building material suppliers to enter the international reconstruction market and our proprietary project market with minimal investment.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- News Section -->
+    <section class="news" id="news">
+        <h2>News & Developments</h2>
+        <div class="news-grid">
+            <div class="news-card">
+                <div class="news-image rebuild"></div>
+                <div class="news-content">
+                    <div class="news-date">February 25, 2025</div>
+                    <h3>Ukraine Reconstruction Needs Reach $524 Billion</h3>
+                    <p>The World Bank, Government of Ukraine, European Commission, and United Nations released updated assessment showing reconstruction and recovery needs totaling $524 billion over the next decade. Housing sector requires almost $84 billion, followed by transport ($78B) and energy ($68B).</p>
+                    <a href="https://www.worldbank.org/en/news/press-release/2025/02/25/updated-ukraine-recovery-and-reconstruction-needs-assessment-released" target="_blank" class="read-more">Read More →</a>
+                </div>
+            </div>
+            <div class="news-card">
+                <div class="news-image conference"></div>
+                <div class="news-content">
+                    <div class="news-date">November 13-14, 2025</div>
+                    <h3>ReBuild Ukraine 2025 Conference</h3>
+                    <p>International exhibition and conference bringing together high-level officials, international partners, investors, and business representatives to discuss Ukraine's recovery. The EU-Ukraine Investment Conference will mobilize private investment towards reconstruction and showcase the Ukraine Investment Framework.</p>
+                    <a href="https://rebuildukraine.in.ua/en" target="_blank" class="read-more">Read More →</a>
+                </div>
+            </div>
+            <div class="news-card">
+                <div class="news-image investment"></div>
+                <div class="news-content">
+                    <div class="news-date">September 2025</div>
+                    <h3>Private Sector to Cover One-Third of Reconstruction</h3>
+                    <p>Major international companies including CRH, Saint-Gobain, and Kingspan are investing in Ukraine's construction materials sector. New glass factories, cement plants, and sustainable building material facilities are being established to meet reconstruction demand and create local manufacturing capacity.</p>
+                    <a href="https://odessa-journal.com/90-of-construction-materials-can-be-produced-in-ukraine" target="_blank" class="read-more">Read More →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <h2>Contact Us</h2>
+        <div class="contact-container">
+            <div class="contact-info">
+                <h3>Get In Touch</h3>
+                <div class="info-item">
+                    <strong>Company Name:</strong>
+                    SUNWELL GROUP LTD.
+                </div>
+                <div class="info-item">
+                    <strong>Email:</strong>
+                    <!-- ENTER YOUR EMAIL ADDRESS HERE -->
+                    contact@sunwell-canada.com
+                </div>
+                <div class="info-item">
+                    <strong>Business Focus:</strong>
+                    Ukraine Post-War Reconstruction<br>
+                    Building Materials Supply Platform<br>
+                    Trust Sales & Distribution
+                </div>
+                <div class="info-item">
+                    <strong>Service Areas:</strong>
+                    Kyiv, Odessa, Lviv, Zaporizhzhia
+                </div>
+                <div class="info-item">
+                    <strong>Partnerships:</strong>
+                    Ukraine Reconstruction Committee<br>
+                    Dream Rebuild Volunteers Association (DRVA)<br>
+                    Dreams Realized Charity (DRC)
+                </div>
+            </div>
+            <form class="contact-form" id="contactForm">
+                <input type="text" name="name" placeholder="Your Name *" required>
+                <input type="email" name="email" placeholder="Your Email *" required>
+                <input type="tel" name="phone" placeholder="Phone Number">
+                <input type="text" name="company" placeholder="Company Name">
+                <textarea name="message" placeholder="Your Message *" required></textarea>
+                <button type="submit" class="submit-button">Send Message</button>
+                <div class="form-message" id="formMessage"></div>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 SUNWELL GROUP LTD. All rights reserved. | Building Materials Supplier Cooperation Agreement Available</p>
+    </footer>
+
+    <script>
+        // ==========================================
+        // GITHUB PAGES EMAIL SOLUTION
+        // ==========================================
+        // GitHub Pages is STATIC HOSTING ONLY - it cannot run server-side code!
+        // 
+        // THREE OPTIONS FOR EMAIL ON GITHUB PAGES:
+        //
+        // OPTION 1 (Current - Simple but not ideal):
+        // Uses mailto: which opens user's email client
+        // Works immediately but relies on user having email configured
+        //
+        // OPTION 2 (Recommended - Use Formspree):
+        // 1. Go to https://formspree.io (free tier available)
+        // 2. Create account and get your form endpoint
+        // 3. Replace the form submission code below
+        // Example:
+        // <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+        //
+        // OPTION 3 (Professional - Use EmailJS):
+        // 1. Go to https://www.emailjs.com (free tier: 200 emails/month)
+        // 2. Create account, set up email service
+        // 3. Add EmailJS script and use their API
+        // Tutorial: https://www.emailjs.com/docs/
+        // ==========================================
+        
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(this);
+            const messageDiv = document.getElementById('formMessage');
+            
+            // Get form values
+            const name = formData.get('name');
+            const email = formData.get('email');
+            const phone = formData.get('phone') || 'Not provided';
+            const company = formData.get('company') || 'Not provided';
+            const message = formData.get('message');
+            
+            // Format email body
+            const emailBody = `
+New Contact Form Submission from SUNWELL GROUP Website
+
+Name: ${name}
+Email: ${email}
+Phone: ${phone}
+Company: ${company}
+
+Message:
+${message}
+
+---
+Sent from SUNWELL GROUP Contact Form
+            `.trim();
+            
+            // CHANGE THIS EMAIL ADDRESS TO YOUR ACTUAL EMAIL
+            const recipientEmail = 'contact@sunwell-canada.com';
+            const subject = encodeURIComponent('New Contact Form Submission - SUNWELL GROUP');
+            const body = encodeURIComponent(emailBody);
+            
+            // Opens user's email client (works on GitHub Pages but not ideal)
+            window.location.href = `mailto:${recipientEmail}?subject=${subject}&body=${body}`;
+            
+            // Show message
+            messageDiv.textContent = 'Opening your email client to send the message...';
+            messageDiv.className = 'form-message success';
+            messageDiv.style.display = 'block';
+            
+            setTimeout(() => {
+                this.reset();
+                messageDiv.style.display = 'none';
+            }, 3000);
+        });
+    </script>
+</body>
+</html>
